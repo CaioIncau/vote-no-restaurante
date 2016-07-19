@@ -23,7 +23,7 @@ public class User {
 	}
 	
 
-    @OneToMany(mappedBy = "vote")
+    @OneToMany
     private List<Vote> votes;
 	
 	

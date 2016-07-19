@@ -17,7 +17,7 @@ public class Restaurant {
 	
 	private String logoUrl;
 	
-	@OneToMany(mappedBy = "vote")
+	@OneToMany
     private List<Vote> votes;
 
 	public Restaurant(String name, String logoUrl) {

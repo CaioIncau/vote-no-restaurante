@@ -1,5 +1,6 @@
 package br.com.caelum.vraptor.controller;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
@@ -29,7 +30,6 @@ public class IndexController {
 
 	@Path("/")
 	public void index() {
-		this.restaurants.save(new Restaurant("Outback","http://freevectorlogo.net/wp-content/uploads/2012/12/outback-steakhouse-vector-logo.png"));
 		result.include("variable", "VRaptor!");
 	}
 }
