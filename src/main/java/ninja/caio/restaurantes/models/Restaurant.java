@@ -8,30 +8,22 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class User {
-
+public class Restaurant {
+	
 	@Id @GeneratedValue
 	private long id;
 	
 	private String name;
 	
-	private String email;
-
-	public User(String name, String email) {
-		this.name = name;
-		this.email = email;
-	}
+	private String logoUrl;
 	
-
-    @OneToMany(mappedBy = "vote")
+	@OneToMany(mappedBy = "vote")
     private List<Vote> votes;
-	
-	
-	/**
-	 * @deprecated hibernate eyes onlys
-	 */
-	public User(){
-		
+
+	public Restaurant(String name, String logoUrl) {
+		this.name = name;
+		this.logoUrl = logoUrl;
 	}
+	
 	
 }
