@@ -42,3 +42,7 @@ label img{
     font-family: "‘Palatino Linotype’", "‘Book Antiqua’", Palatino, serif;
     padding: 1em 0px;
 }
+.user-text{
+	    width: 100%;
+    text-align: center;
+}

@@ -9,9 +9,10 @@
 </head>
 <body>
 <div class="ranking-header">
+<p> Obrigado por participar ${user.getName()}
 <h2>Ranking</h2>
 	<img src="${all.get(0).getLogoUrl()}">
-</div>c
+</div>
 <div class="ranking">
 	<c:forEach var="i" begin="0" end="4">
 	 <p> ${all.get(i).getName()} - ${all.get(i).getVotes().size() } votos</p>

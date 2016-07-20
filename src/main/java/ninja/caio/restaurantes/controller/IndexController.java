@@ -9,7 +9,9 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import ninja.caio.restaurantes.infra.RestaurantDao;
+import ninja.caio.restaurantes.infra.UserDao;
 import ninja.caio.restaurantes.models.Restaurant;
+import ninja.caio.restaurantes.models.User;
 import ninja.caio.restaurantes.models.VotesHandler;
 
 @Controller
@@ -18,19 +20,21 @@ public class IndexController {
 	private final Result result;
 	private final RestaurantDao restaurants;
 	private VotesHandler handler;
+	private final UserDao users;
 
 	/**
 	 * @deprecated CDI eyes only
 	 */
 	protected IndexController() {
-		this(null, null, null);
+		this(null, null, null, null);
 	}
 	
 	@Inject
-	public IndexController(Result result,RestaurantDao restaurants,VotesHandler handler) {
+	public IndexController(Result result,RestaurantDao restaurants,VotesHandler handler,UserDao users) {
 		this.result = result;
 		this.restaurants = restaurants;
 		this.handler = handler;
+		this.users = users;
 	}
 
 	@Get("/")
@@ -38,8 +42,9 @@ public class IndexController {
 		result.include("handler", handler);
 	}
 	@Get("/ranking")
-	public void ranking() {
+	public void ranking(User user) {
 		 List<Restaurant> all = restaurants.allSortedByVotes();
+		 result.include("user",user);
 		result.include("all", all);
 	}
 	
@@ -53,9 +58,21 @@ public class IndexController {
 			result.redirectTo(this).index();
 			return;
 		}
-		result.redirectTo(this).ranking();
+		result.redirectTo(this).userProfile();
 	}
 	
+	@Get("/user")
+	public void userProfile() {
+		
+	}
+	
+	@Post("/saveUser")
+	public void saveUser(String nome,String email) {
+		User user = new User(nome, email);
+		users.save(user);
+		result.include("user",user);
+		result.redirectTo(this).ranking(user);
+	}
 
 	@Path("/hash1940dandjada1daff80514affag941")
 	public void ok() {

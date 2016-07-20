@@ -1,5 +1,6 @@
 /Users/caioincau/Documents/workspace/vote-no-restaurante/src/main/java/ninja/caio/restaurantes/models/User.java
 /Users/caioincau/Documents/workspace/vote-no-restaurante/src/main/java/ninja/caio/restaurantes/models/Restaurant.java
+/Users/caioincau/Documents/workspace/vote-no-restaurante/src/main/java/ninja/caio/restaurantes/infra/UserDao.java
 /Users/caioincau/Documents/workspace/vote-no-restaurante/src/main/java/ninja/caio/restaurantes/models/Vote.java
 /Users/caioincau/Documents/workspace/vote-no-restaurante/src/main/java/ninja/caio/restaurantes/models/VotesHandler.java
 /Users/caioincau/Documents/workspace/vote-no-restaurante/src/main/java/ninja/caio/restaurantes/infra/RestaurantDao.java
