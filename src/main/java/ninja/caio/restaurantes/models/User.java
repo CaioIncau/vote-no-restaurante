@@ -22,10 +22,6 @@ public class User {
 		this.email = email;
 	}
 	
-
-    @OneToMany
-    private List<Vote> votes;
-	
 	
 	/**
 	 * @deprecated hibernate eyes onlys

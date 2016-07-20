@@ -1,29 +1,60 @@
 package ninja.caio.restaurantes.models;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class VotesHandler {
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+
+import ninja.caio.restaurantes.infra.RestaurantDao;
+
+@SessionScoped
+public class VotesHandler implements Serializable {
 
 	private Restaurant currentVoted;
 	
-	private List<Restaurant> all;
 
-	public VotesHandler(List<Restaurant> all) {
-		this.currentVoted = all.get(0);
-		this.all = all;
+	private RestaurantDao restaurants;
+	
+	private int count = 1;
+	private ArrayList<Restaurant> all = new ArrayList<>();
+
+
+	/**
+	 * @deprecated cdi eyes only
+	 */
+	public VotesHandler(){
+		this(null);
 	}
 	
-	public void vote(Restaurant voted,Restaurant other){
+	@Inject
+	public VotesHandler(RestaurantDao restaurants){
+		this.restaurants = restaurants;
+	}
+	@PostConstruct
+	public void setUp() {
+		ArrayList<Restaurant> all = (ArrayList<Restaurant>) restaurants.all();
+		all.sort((r1,r2) -> r1.getName().compareTo(r2.getName()));
+		this.currentVoted = all.get(0);
+		this.all  = all;
+	}
+	
+	public void voteOn(Restaurant voted){
 		currentVoted = voted;
-		all.remove(other);
+		count++;
 	}
 	
 	public boolean hasNext(){
-		return !all.isEmpty();
+		return count<5;
 	}
 
 	public Restaurant getCurrentVoted() {
 		return currentVoted;
 	}
 	
+	public Restaurant getNext() {
+		return all.get(count);
+	}
+
 }

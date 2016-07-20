@@ -9,6 +9,17 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Vote {
 	
+	public Vote(Restaurant restaurant2) {
+		this.restaurant = restaurant2;
+	}
+
+	
+	/**
+	 * @deprecated hibernate eyes only
+	 */
+	public Vote() {
+	}
+
 	@Id @GeneratedValue
 	private long id;
 	
@@ -16,8 +27,6 @@ public class Vote {
 	@ManyToOne
     @JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
-	@ManyToOne
-    @JoinColumn(name = "user_id")
-	private User user;
+	
 
 }

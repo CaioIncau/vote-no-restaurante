@@ -1,5 +1,6 @@
 package ninja.caio.restaurantes.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,12 +19,37 @@ public class Restaurant {
 	private String logoUrl;
 	
 	@OneToMany
-    private List<Vote> votes;
+    private List<Vote> votes = new ArrayList<>();
 
 	public Restaurant(String name, String logoUrl) {
 		this.name = name;
 		this.logoUrl = logoUrl;
 	}
 	
+	/**
+	 * @deprecated hibernate eyes only
+	 */
+	public Restaurant() {
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getLogoUrl() {
+		return logoUrl;
+	}
+
+	public List<Vote> getVotes() {
+		return votes;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void vote() {
+		this.votes.add(new Vote(this));
+	}
 	
 }
