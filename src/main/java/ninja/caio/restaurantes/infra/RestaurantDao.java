@@ -2,7 +2,6 @@ package ninja.caio.restaurantes.infra;
 
 import static java.util.Collections.reverse;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 

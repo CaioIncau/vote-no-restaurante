@@ -2,15 +2,10 @@ package ninja.caio.restaurantes.infra;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import ninja.caio.restaurantes.infra.RestaurantDao;
-import ninja.caio.restaurantes.models.Restaurant;
 import ninja.caio.restaurantes.models.VotesHandler;
 
 public class VotesHandlerTest extends BaseTest {

@@ -1,13 +1,6 @@
 package ninja.caio.restaurantes.controller;
 
-import static java.util.stream.Collectors.toList;
-
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
