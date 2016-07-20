@@ -1,0 +1,18 @@
+.ranking,.ranking-header{
+	text-align: center;
+	    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.ranking-header img{
+	    max-width: 80%;
+    padding-bottom: 3em;
+}
+
+.ranking p:nth-child(even){background: #d4d2d5}
+.ranking p:nth-child(odd){background: #FFF}
+
+.ranking p{
+	padding: 1em 0;
+}
